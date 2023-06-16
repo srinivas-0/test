@@ -6,14 +6,19 @@ pipeline {
               sh "git pull https://github.com/srinivas-0/test.git"
             }
         }
-        stage('Test') {
+        stage('Compile') {
           steps {
             sh "mvn clean compile"
           }
         }
-        stage('Build') {
+        stage('Test') {
           steps {
             sh "mvn clean test"
+          }
+        } 
+        stage('package') {
+          steps {
+            sh "mvn clean package"
           }
         } 
     }
